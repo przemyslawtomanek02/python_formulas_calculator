@@ -1,16 +1,52 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test python</title>
-    <link rel="stylesheet" href="/static/styles/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  </head>
-  <body>
-    <div>
-      <h1>Test render</h1>
+{% extends "base.html" %} {% block content %}
+<div class="mt-[120px] gap-4 grid">
+  <div
+    class="bg-white p-5 w-max rounded-lg shadow border-[1px] border-grey-300"
+  >
+    <h1 class="text-2xl mb-4">Policz pole kwadratu</h1>
+    <form action="">
+      <label for="side-square"> Bok kwadratu: </label>
+      <input
+        class="w-full border border-grey-300 p-2 mt-2 mb-2 rounded-lg"
+        type="text"
+        name="side-square"
+        id="side-square"
+      />
+      <button class="bg-blue-600 text-blue-50 w-full py-2 rounded-lg mt-2">
+        policz
+      </button>
+    </form>
+    <div class="py-5 w-full">
+      <p class="mb-1">Wynik:</p>
+      <div class="bg-green-500 py-2 px-2 text-center rounded-lg">
+        <p class="wynik text-blue-50">543cm</p>
+      </div>
     </div>
-  </body>
-</html>
+  </div>
+
+  <div
+    class="bg-white p-5 w-max rounded-lg shadow border-[1px] border-grey-300"
+  >
+    <h1 class="text-2xl mb-4">Policz pole kwadratu</h1>
+    <form action="">
+      <label for="side-square"> Bok kwadratu: </label>
+      <input
+        class="w-full border border-grey-300 p-2 mt-2 mb-2 rounded-lg"
+        type="text"
+        name="side-square"
+        id="side-square"
+      />
+      <button class="bg-blue-600 text-blue-50 w-full py-2 rounded-lg mt-2">
+        policz
+      </button>
+    </form>
+    <div class="py-5 w-full">
+      <p class="mb-1">Wynik:</p>
+      <div class="bg-green-500 py-2 px-2 text-center rounded-lg hidden">
+        <p class="wynik text-blue-50">543cm</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
