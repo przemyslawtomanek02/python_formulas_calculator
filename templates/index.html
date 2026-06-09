@@ -1,52 +1,112 @@
 {% extends "base.html" %} {% block content %}
-<div class="mt-[120px] gap-4 grid">
-  <div
-    class="bg-white p-5 w-max rounded-lg shadow border-[1px] border-grey-300"
-  >
-    <h1 class="text-2xl mb-4">Policz pole kwadratu</h1>
-    <form action="">
-      <label for="side-square"> Bok kwadratu: </label>
-      <input
-        class="w-full border border-grey-300 p-2 mt-2 mb-2 rounded-lg"
-        type="text"
-        name="side-square"
-        id="side-square"
-      />
-      <button class="bg-blue-600 text-blue-50 w-full py-2 rounded-lg mt-2">
-        policz
-      </button>
-    </form>
-    <div class="py-5 w-full">
-      <p class="mb-1">Wynik:</p>
-      <div class="bg-green-500 py-2 px-2 text-center rounded-lg">
-        <p class="wynik text-blue-50">543cm</p>
+<div class="mt-[120px] container mx-auto px-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <!-- Karta 1 -->
+    <div class="bg-white p-5 w-full rounded-lg shadow border border-gray-300">
+      <h1 class="text-2xl mb-4">Policz pole kwadratu</h1>
+
+      <form action="">
+        <label for="side-square-1">Bok kwadratu:</label>
+
+        <input
+          class="w-full border border-gray-300 p-2 mt-2 mb-2 rounded-lg"
+          type="text"
+          name="side-square"
+          id="side-square-1"
+        />
+
+        <button
+          type="submit"
+          class="bg-blue-600 text-blue-50 w-full py-2 rounded-lg mt-2"
+        >
+          Policz
+        </button>
+      </form>
+
+      <div class="py-5">
+        <p class="mb-1">Wynik:</p>
+
+        <div class="bg-green-500 py-2 px-2 text-center rounded-lg">
+          <p class="wynik text-blue-50">543 cm²</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div
-    class="bg-white p-5 w-max rounded-lg shadow border-[1px] border-grey-300"
-  >
-    <h1 class="text-2xl mb-4">Policz pole kwadratu</h1>
-    <form action="">
-      <label for="side-square"> Bok kwadratu: </label>
-      <input
-        class="w-full border border-grey-300 p-2 mt-2 mb-2 rounded-lg"
-        type="text"
-        name="side-square"
-        id="side-square"
-      />
-      <button class="bg-blue-600 text-blue-50 w-full py-2 rounded-lg mt-2">
-        policz
-      </button>
-    </form>
-    <div class="py-5 w-full">
-      <p class="mb-1">Wynik:</p>
-      <div class="bg-green-500 py-2 px-2 text-center rounded-lg hidden">
-        <p class="wynik text-blue-50">543cm</p>
+    <!-- Karta 2 -->
+    <div class="bg-white p-5 w-full rounded-lg shadow border border-gray-300">
+      <h1 class="text-2xl mb-4">Policz pole prostokąta</h1>
+
+      <form action="">
+        <label for="side-square-2">Bok długi:</label>
+
+        <input
+          class="w-full border border-gray-300 p-2 mt-2 mb-2 rounded-lg"
+          type="text"
+          name="side-square"
+          id="side-square-2"
+        />
+        <label for="side-square-2">Bok krótki:</label>
+        <input
+          class="w-full border border-gray-300 p-2 mt-2 mb-2 rounded-lg"
+          type="text"
+          name="side-square"
+          id="side-square-2"
+        />
+
+        <button
+          type="submit"
+          class="bg-blue-600 text-blue-50 w-full py-2 rounded-lg mt-2"
+        >
+          Policz
+        </button>
+      </form>
+
+      <div class="py-5">
+        <p class="mb-1">Wynik:</p>
+
+        <div class="bg-green-500 py-2 px-2 text-center rounded-lg hidden">
+          <p class="wynik text-blue-50">543 cm²</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Karta 3 -->
+    <div class="bg-white p-5 w-full rounded-lg shadow border border-gray-300">
+      <h1 class="text-2xl mb-4">Policz pole trójkąta równoramiennego</h1>
+
+      <form action="">
+        <label for="side-square-3">Podstawa trójkąta:</label>
+
+        <input
+          class="w-full border border-gray-300 p-2 mt-2 mb-2 rounded-lg"
+          type="text"
+          name="side-square"
+          id="side-square-3"
+        />
+        <label for="side-square-3">Wysokość trójkąta:</label>
+
+        <input
+          class="w-full border border-gray-300 p-2 mt-2 mb-2 rounded-lg"
+          type="text"
+          name="side-square"
+          id="side-square-3"
+        />
+        <button
+          type="submit"
+          class="bg-blue-600 text-blue-50 w-full py-2 rounded-lg mt-2"
+        >
+          Policz
+        </button>
+      </form>
+
+      <div class="py-5">
+        <p class="mb-1">Wynik:</p>
+
+        <div class="bg-green-500 py-2 px-2 text-center rounded-lg hidden">
+          <p class="wynik text-blue-50">543 cm²</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock %}
