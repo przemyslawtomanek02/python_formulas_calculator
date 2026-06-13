@@ -5,7 +5,7 @@
     <div class="bg-white p-5 w-full rounded-lg shadow border border-gray-300">
       <h1 class="text-2xl mb-4">Policz pole kwadratu</h1>
 
-      <form action="/" method="POST">
+      <form action="/square" method="POST">
         <label for="side-square-1">Bok kwadratu:</label>
 
         <input
@@ -27,7 +27,7 @@
         <p class="mb-1">Wynik:</p>
 
         <div class="bg-green-500 py-2 px-2 text-center rounded-lg">
-          <p class="wynik text-blue-50">543 cm²</p>
+          <p class="wynik text-blue-50">{{square_area}} cm2</p>
         </div>
       </div>
     </div>
@@ -36,21 +36,21 @@
     <div class="bg-white p-5 w-full rounded-lg shadow border border-gray-300">
       <h1 class="text-2xl mb-4">Policz pole prostokąta</h1>
 
-      <form action="">
-        <label for="side-square-2">Bok długi:</label>
+      <form action="/rectangle" method="POST">
+        <label for="">Bok długi:</label>
 
         <input
           class="w-full border border-gray-300 p-2 mt-2 mb-2 rounded-lg"
           type="text"
-          name="side-square"
-          id="side-square-2"
+          name="w"
+          id="rectangle_area"
         />
-        <label for="side-square-2">Bok krótki:</label>
+        <label for="">Bok krótki:</label>
         <input
           class="w-full border border-gray-300 p-2 mt-2 mb-2 rounded-lg"
           type="text"
-          name="side-square"
-          id="side-square-2"
+          name="h"
+          id="rectangle_area"
         />
 
         <button
@@ -64,8 +64,8 @@
       <div class="py-5">
         <p class="mb-1">Wynik:</p>
 
-        <div class="bg-green-500 py-2 px-2 text-center rounded-lg hidden">
-          <p class="wynik text-blue-50">543 cm²</p>
+        <div class="bg-green-500 py-2 px-2 text-center rounded-lg">
+          <p class="wynik text-blue-50">{{rectangle_area}} cm²</p>
         </div>
       </div>
     </div>

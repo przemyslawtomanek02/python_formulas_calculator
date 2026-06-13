@@ -3,14 +3,12 @@ Pi = math.floor(math.pi * 100)/100
 
 # square area - in
 def square_area(l):
-    print("Welcome in square area calculator")
     cacl_square_area = l * l
-    print("Solution: ", cacl_square_area)
+    return cacl_square_area
 # rectangle area - in
 def rectangle_area(w, h):
-    print("Welcome in rectangle area calculator")
     cacl_rectangle_area = w * h
-    print("Solution:", cacl_rectangle_area)
+    return cacl_rectangle_area
 # triangle area - in
 def triangle_area(b, h):
     calc_triangle_area = (b * h)/2
