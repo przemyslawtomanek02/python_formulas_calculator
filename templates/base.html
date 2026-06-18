@@ -5,19 +5,198 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% block title %}Kalkulator pól{% endblock %}</title>
 
-    <!-- Usuwamy link do Bootstrapa i wklejamy skrypt Tailwinda -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <!-- Dodajemy od razu domyślny kolor tła i tekstu dla całej strony -->
-  <body class="bg-gray-100 text-gray-800 font-sans p-6">
-    <!-- Twój wycentrowany kontener w stylu Tailwinda -->
-    <div class="container mt-5">
-      <h1 class="text-6xl font-bold text-blue-600 text-center mb-6">
-        Kalkulator wzorów matematycznych
+  <body class="bg-gray-100 text-gray-800 font-sans pb-28 px-6 pt-6">
+    <div
+      class="relative w-full py-12 mb-4 flex justify-center items-center overflow-hidden"
+    >
+      <div
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[12vw] font-black text-gray-200/70 whitespace-nowrap -z-10 select-none pointer-events-none tracking-tighter"
+      >
+        KALKULATOR
+      </div>
+
+      <h1
+        class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-700 via-blue-500 to-cyan-400 text-center tracking-tight drop-shadow-sm"
+      >
+        Wzory matematyczne
       </h1>
     </div>
+
     {% block content %} {% endblock %}
-    <p>Wynik to {{pole}}</p>
+
+    <div
+      class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-max max-w-[95vw]"
+    >
+      <div
+        class="flex items-center gap-1 bg-gray-900/95 text-gray-400 p-2 rounded-full shadow-2xl border border-gray-700/50 backdrop-blur-md overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
+        <a
+          href="/"
+          title="Menu główne"
+          class="flex-shrink-0 p-3 rounded-full hover:bg-gray-800 hover:text-blue-400 transition-colors group"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            ></path>
+          </svg>
+        </a>
+
+        <div class="w-px h-8 bg-gray-700 mx-1 flex-shrink-0"></div>
+
+        <a
+          href="/square"
+          title="Kwadrat"
+          class="flex-shrink-0 p-3 rounded-full hover:bg-gray-800 hover:text-blue-400 transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 4h16v16H4V4z"
+            ></path>
+          </svg>
+        </a>
+
+        <a
+          href="/rectangle"
+          title="Prostokąt"
+          class="flex-shrink-0 p-3 rounded-full hover:bg-gray-800 hover:text-blue-400 transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16v12H4V6z"
+            ></path>
+          </svg>
+        </a>
+
+        <a
+          href="/triangle"
+          title="Trójkąt"
+          class="flex-shrink-0 p-3 rounded-full hover:bg-gray-800 hover:text-blue-400 transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4L4 20h16L12 4z"
+            ></path>
+          </svg>
+        </a>
+
+        <a
+          href="/rhombus"
+          title="Romb"
+          class="flex-shrink-0 p-3 rounded-full hover:bg-gray-800 hover:text-blue-400 transition-colors"
+        >
+          <svg
+            class="w-6 h-6 transform rotate-45"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 4h16v16H4V4z"
+            ></path>
+          </svg>
+        </a>
+
+        <a
+          href="/trapezoid"
+          title="Trapez"
+          class="flex-shrink-0 p-3 rounded-full hover:bg-gray-800 hover:text-blue-400 transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 6h8l4 12H4l4-12z"
+            ></path>
+          </svg>
+        </a>
+
+        <a
+          href="/circle"
+          title="Koło"
+          class="flex-shrink-0 p-3 rounded-full hover:bg-gray-800 hover:text-blue-400 transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            ></circle>
+          </svg>
+        </a>
+
+        <a
+          href="/cone"
+          title="Stożek"
+          class="flex-shrink-0 p-3 rounded-full hover:bg-gray-800 hover:text-blue-400 transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 2L4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2L12 2z"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
   </body>
 </html>

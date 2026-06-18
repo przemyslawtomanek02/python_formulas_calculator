@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %}Strona nie znaleziona (404){%
+endblock %} {% block content %}
+<div class="mt-8 container mx-auto px-4 flex justify-center">
+  <div
+    class="bg-white p-8 w-full max-w-md rounded-xl shadow-sm border border-gray-200 text-center"
+  >
+    <div
+      class="w-24 h-24 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-6"
+    >
+      <svg
+        class="w-12 h-12"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+        ></path>
+      </svg>
+    </div>
+
+    <h1 class="text-3xl font-bold text-gray-800 mb-3">Ojej! Błąd 404</h1>
+    <p class="text-gray-600 mb-6 leading-relaxed">
+      Wygląda na to, że zgubiłeś drogę. Strona, której szukasz, nie istnieje lub
+      została przeniesiona pod inny adres.
+    </p>
+
+    {% if error %}
+    <div class="bg-gray-50 rounded-lg p-3 mb-8 border border-gray-100">
+      <p class="text-xs text-gray-500 font-mono break-words">
+        <strong>Szczegóły:</strong> {{ error }}
+      </p>
+    </div>
+    {% endif %}
+
+    <a
+      href="/"
+      class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors w-full shadow-sm"
+    >
+      Wróć do strony głównej
+    </a>
+  </div>
+</div>
+{% endblock %}

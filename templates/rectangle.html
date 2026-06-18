@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block content %}
+<div class="mt-[120px] container mx-auto px-4 flex justify-center">
+  <div
+    class="bg-white p-6 w-full max-w-md rounded-xl shadow-sm border border-gray-200"
+  >
+    <h1 class="text-2xl font-semibold mb-6 text-gray-800">
+      Policz pole prostokąta
+    </h1>
+
+    <form action="/rectangle" method="POST">
+      <label for="w" class="block text-sm font-medium text-gray-700 mb-1"
+        >Bok długi (w):</label
+      >
+      <input
+        class="w-full border border-gray-300 p-2.5 mb-4 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+        type="text"
+        name="w"
+        id="w"
+        required
+      />
+
+      <label for="h" class="block text-sm font-medium text-gray-700 mb-1"
+        >Bok krótki (h):</label
+      >
+      <input
+        class="w-full border border-gray-300 p-2.5 mb-4 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+        type="text"
+        name="h"
+        id="h"
+        required
+      />
+
+      <button
+        type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-medium w-full py-2.5 rounded-lg transition-colors"
+      >
+        Policz
+      </button>
+    </form>
+
+    {% if rectangle_area %}
+    <div class="mt-6 pt-6 border-t border-gray-100">
+      <p class="text-sm text-gray-600 mb-2">Wynik:</p>
+      <div class="bg-green-500 py-3 px-4 text-center rounded-lg shadow-sm">
+        <p class="wynik text-white font-bold text-lg">
+          {{ rectangle_area }} cm²
+        </p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
