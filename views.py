@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 import formulas_functions
-
+error = "ERROR MESSAGE"
 
 
 views = Blueprint(__name__, "views")
@@ -11,16 +11,25 @@ def home():
 
 @views.route("/square", methods=['GET', 'POST'])
 def square_area():
-  wynik = None
-  if request.method == 'POST':
-    bok = request.form.get('side-square')
-    if bok == "":
-      error = "this is message"
-      return render_template("square.html", square_area=error )
-    na_liczbe = float(bok)
-    wynik = formulas_functions.square_area(na_liczbe)
-  return render_template("square.html", square_area=wynik )
-
+    if request.method == 'POST':
+        bok = request.form.get('side-square')
+        try:
+            na_liczbe = float(bok)
+            if na_liczbe < 0:
+                # Błąd 1: Ujemna liczba
+                return render_template("square.html", error_0="Bok nie może być mniejszy od 0") 
+            
+            # Sukces: Liczymy i oddajemy wynik
+            wynik = formulas_functions.square_area(na_liczbe)
+            return render_template("square.html", square_area=wynik)
+            
+        except ValueError: 
+            # Błąd 2: Ktoś wpisał tekst
+            return render_template("square.html", error_0="Akceptowane są tylko liczby") 
+            
+    # Standardowe wejście na stronę (metoda GET)
+    # Zwracamy CZYSTY szablon, bez żadnych dodatkowych zmiennych!
+    return render_template("square.html")
 
 @views.route("/rectangle", methods=['GET', 'POST'])
 def rectangle_area():
