@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 import formulas_functions
-error = "ERROR MESSAGE"
+words_error_message = "Akceptowane są tylko liczby"
+side_0_error_message = "Bok nie może być mniejszy od 0"
 
 
 views = Blueprint(__name__, "views")
@@ -25,7 +26,7 @@ def square_area():
             
         except ValueError: 
             # Błąd 2: Ktoś wpisał tekst
-            return render_template("square.html", error_0="Akceptowane są tylko liczby") 
+            return render_template("square.html", error_0=words_error_message) 
             
     # Standardowe wejście na stronę (metoda GET)
     # Zwracamy CZYSTY szablon, bez żadnych dodatkowych zmiennych!
@@ -33,16 +34,20 @@ def square_area():
 
 @views.route("/rectangle", methods=['GET', 'POST'])
 def rectangle_area():
-  wynik = None
-  if request.method == "POST":
-    w_string = request.form.get('w')
-    h_string = request.form.get('h')
-    if w_string == "" and h_string == "":
-      error = "this is message"
-      return render_template("rectangle.html", rectangle_area=error )
-    w = float(w_string)
-    h = float(h_string)
-    print("--------------", request.form, "--------------")
-    wynik = formulas_functions.rectangle_area(w, h)
-  return render_template("rectangle.html", rectangle_area=wynik)
+    # Punk wejscia danych POST
+    if request.method == "POST":
+        w_string = request.form.get('w')
+        h_string = request.form.get('h')
+        # Próba wykonania działania na liczbach
+        try:
+            w = float(w_string)
+            h = float(h_string)
+            if w < 0 or h < 0:
+              return render_template("rectangle.html", error_0=side_0_error_message )
+            backend_rectangle_are = formulas_functions.rectangle_area(w, h)
+            return render_template("rectangle.html", rectangle_area=backend_rectangle_are)
+        except ValueError:
+            #Błąd ktoś wpisał teskt
+            return render_template("rectangle.html", error_0=words_error_message)
+    return render_template("rectangle.html")
 
