@@ -16,22 +16,22 @@ def triangle_area(b, h):
 # rhombus area - in
 def rhombus_area(D, d):
     calc_rhombus_area = (D * d)/2
-    print("Solution:", calc_rhombus_area)
+    return calc_rhombus_area
 # trapezoid area - in
 def trapezoid_area(B, b, h):
     calc_trapezoid_area = ((B + b)/2) * h
-    print("Solution:", calc_trapezoid_area)
+    return calc_trapezoid_area
 # regular polygon area - in
 def regular_polygon_area(P, a):
     calc_regular_polygon_area = (P/2) * a
-    print("Solution:", calc_regular_polygon_area)
+    return calc_regular_polygon_area
 # circle area - in
 def circle_area(r):
     calc_circle_area = Pi * (r * r)
-    print("Solution:", calc_circle_area)
+    return calc_circle_area
 def cone_area(r, s):
     calc_cone_area = (Pi * r) * s
-    print("Solution:", calc_cone_area)
+    return calc_cone_area
 def sphere_area(r):
     calc_sphere_area = (4 * Pi) * (r * r)
-    print("Solution:", calc_sphere_area)
+    return calc_sphere_area

@@ -1,47 +1,44 @@
 from flask import Blueprint, render_template, request
 import formulas_functions
-# import validators
-words_error_message = "Akceptowane są tylko liczby"
-side_0_error_message = "Bok/wysokość nie może być mniejszy, bądź równy 0"
+import validators
+
+#-----  Wiadomość do walidacji - start -----#
 validate_message = 'Wartości muszą być większe od 0'
+#-----  Wiadomość do walidacji - koniec -----#
 
-def validate_two_date(a, b):
-  if a <= 0 or b <= 0:
-    print("Wartości muszą być większe od 0")
-    return "Wartości muszą być większe od 0"
-  return None
-
-
-
-
+#-----  Views - start -----#
 views = Blueprint(__name__, "views")
+#-----  Views - koniec -----#
 
+#----- Strona główna - start -----#
 @views.route("/")
 def home():
   return render_template("home.html")
+#----- Strona główna - koniec -----#
 
+#----- Kwadrat - start -----#
 @views.route("/square", methods=['GET', 'POST'])
 def square_area():
+    # Punk wejscia danych POST
     if request.method == 'POST':
-        bok = request.form.get('side-square')
+        a_string = request.form.get('side-square')
+        # Próba wykonania działania na liczbach
         try:
-            na_liczbe = float(bok)
-            if na_liczbe < 0:
-                # Błąd 1: Ujemna liczba
-                return render_template("square.html", error_0="Bok nie może być mniejszy od 0") 
-            
-            # Sukces: Liczymy i oddajemy wynik
-            wynik = formulas_functions.square_area(na_liczbe)
-            return render_template("square.html", square_area=wynik)
-            
+            a = float(a_string)
+            # Walidacja danych
+            validate_error = validators.validate_single_date(a)
+            if validate_error:
+                return render_template("square.html", error_0=validate_message) 
+            # Renderowanie wyniku
+            return render_template("square.html", square_area=formulas_functions.square_area(a))
+        # Walidacja is int
         except ValueError: 
-            # Błąd 2: Ktoś wpisał tekst
             return render_template("square.html", error_0=words_error_message) 
-            
-    # Standardowe wejście na stronę (metoda GET)
-    # Zwracamy CZYSTY szablon, bez żadnych dodatkowych zmiennych!
+    # Wyświetlanie strony
     return render_template("square.html")
+#----- Kwadrat - koniec -----#
 
+#----- Prostokąt - start -----#
 @views.route("/rectangle", methods=['GET', 'POST'])
 def rectangle_area():
     # Punk wejscia danych POST
@@ -52,27 +49,39 @@ def rectangle_area():
         try:
             w = float(w_string)
             h = float(h_string)
-            if w < 0 or h < 0:
-              return render_template("rectangle.html", error_0=side_0_error_message )
-            backend_rectangle_are = formulas_functions.rectangle_area(w, h)
-            return render_template("rectangle.html", rectangle_area=backend_rectangle_are)
+            # Walidacja danych
+            validate_error = validators.validate_two_date(w, h)
+            if validate_error:
+              return render_template("rectangle.html", error_0=validate_message)
+            # Renderowanie wyniku
+            return render_template("rectangle.html", rectangle_area=formulas_functions.rectangle_area(w, h))
+        # Walidacja is int
         except ValueError:
-            #Błąd ktoś wpisał teskt
-            return render_template("rectangle.html", error_0=words_error_message)
+            return render_template("rectangle.html", error_0=validate_message)
+    # Wyświetlanie strony
     return render_template("rectangle.html")
+#----- Prostokąt - koniec -----#
 
+#----- Trójkąt - start -----#
 @views.route("/triangle", methods=['GET', 'POST'])
 def triangle_area():
+    # Punk wejscia danych POST
     if request.method == 'POST':
         b_string = request.form.get('b')
         h_string = request.form.get('h')
+        # Próba wykonania działania na liczbach
         try:
             b = float(b_string)
             h = float(h_string)
-            validate_error = validate_two_date(b, h)
+            # Walidacja danych
+            validate_error = validators.validate_two_date(b, h)
             if validate_error:
                 return render_template('triangle.html', error_0=validate_message)
+            # Renderowanie wyniku
             return render_template('triangle.html', triangle_area=formulas_functions.triangle_area(b, h))
+        # Walidacja is int
         except ValueError:
             return render_template('triangle.html', error_0=words_error_message)
+    # Wyświetlanie strony
     return render_template("triangle.html")
+#----- Trójkąt - koniec -----#
