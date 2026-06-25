@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block content %}
+<div class="mt-[120px] container mx-auto px-4 flex justify-center">
+  <div
+    class="bg-white p-6 w-full max-w-md rounded-xl shadow-sm border border-gray-200"
+  >
+    <h1 class="text-2xl font-semibold mb-6 text-gray-800">
+      Policz pole trójkąta
+    </h1>
+
+    <form action="/triangle" method="POST">
+      <label for="b" class="block text-sm font-medium text-gray-700 mb-1"
+        >Podstawa (b):</label
+      >
+      <input
+        class="w-full border border-gray-300 p-2.5 mb-4 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+        type="text"
+        name="b"
+        id=""
+        required
+      />
+
+      <label for="h" class="block text-sm font-medium text-gray-700 mb-1"
+        >Wysokość (h):</label
+      >
+      <input
+        class="w-full border border-gray-300 p-2.5 mb-4 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+        type="text"
+        name="h"
+        id="h"
+        required
+      />
+
+      <button
+        type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-medium w-full py-2.5 rounded-lg transition-colors"
+      >
+        Policz
+      </button>
+    </form>
+
+    {% if triangle_area %}
+    <div class="mt-6 pt-6 border-t border-gray-100">
+      <p class="text-sm text-gray-600 mb-2">Wynik:</p>
+      <div class="bg-green-500 py-3 px-4 text-center rounded-lg shadow-sm">
+        <p class="wynik text-white font-bold text-lg">
+          {{ triangle_area }} cm²
+        </p>
+      </div>
+    </div>
+    {% endif %} {% if error_0 %}
+    <div class="mt-6 pt-6 border-t border-gray-100">
+      <div
+        class="bg-red-50 border border-red-200 py-3 px-4 rounded-lg shadow-sm flex items-center gap-3"
+      >
+        <svg
+          class="w-5 h-5 text-red-500 flex-shrink-0"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <p class="text-red-700 font-medium text-sm">{{ error_0 }}</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

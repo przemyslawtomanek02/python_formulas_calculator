@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 import formulas_functions
 words_error_message = "Akceptowane są tylko liczby"
-side_0_error_message = "Bok nie może być mniejszy od 0"
+side_0_error_message = "Bok/wysokość nie może być mniejszy, bądź równy 0"
 
 
 views = Blueprint(__name__, "views")
@@ -51,3 +51,19 @@ def rectangle_area():
             return render_template("rectangle.html", error_0=words_error_message)
     return render_template("rectangle.html")
 
+@views.route("/triangle", methods=['GET', 'POST'])
+def triangle_area():
+    if request.method == 'POST':
+        b_string = request.form.get('b')
+        h_string = request.form.get('h')
+        try:
+            b = float(b_string)
+            h = float(h_string)
+            if b < 0 or h < 0:
+                return render_template('triangle.html', error_0=side_0_error_message )
+            elif b == 0 or h == 0: 
+                return render_template('triangle.html', error_0=side_0_error_message)
+            return render_template('triangle.html', triangle_area=formulas_functions.triangle_area(b, h))
+        except ValueError:
+            return render_template('triangle.html', error_0=words_error_message)
+    return render_template("triangle.html")

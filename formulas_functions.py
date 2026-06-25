@@ -12,7 +12,7 @@ def rectangle_area(w, h):
 # triangle area - in
 def triangle_area(b, h):
     calc_triangle_area = (b * h)/2
-    print("Solution:", calc_triangle_area)
+    return calc_triangle_area
 # rhombus area - in
 def rhombus_area(D, d):
     calc_rhombus_area = (D * d)/2
