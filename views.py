@@ -1,7 +1,17 @@
 from flask import Blueprint, render_template, request
 import formulas_functions
+# import validators
 words_error_message = "Akceptowane są tylko liczby"
 side_0_error_message = "Bok/wysokość nie może być mniejszy, bądź równy 0"
+validate_message = 'Wartości muszą być większe od 0'
+
+def validate_two_date(a, b):
+  if a <= 0 or b <= 0:
+    print("Wartości muszą być większe od 0")
+    return "Wartości muszą być większe od 0"
+  return None
+
+
 
 
 views = Blueprint(__name__, "views")
@@ -59,10 +69,9 @@ def triangle_area():
         try:
             b = float(b_string)
             h = float(h_string)
-            if b < 0 or h < 0:
-                return render_template('triangle.html', error_0=side_0_error_message )
-            elif b == 0 or h == 0: 
-                return render_template('triangle.html', error_0=side_0_error_message)
+            validate_error = validate_two_date(b, h)
+            if validate_error:
+                return render_template('triangle.html', error_0=validate_message)
             return render_template('triangle.html', triangle_area=formulas_functions.triangle_area(b, h))
         except ValueError:
             return render_template('triangle.html', error_0=words_error_message)
